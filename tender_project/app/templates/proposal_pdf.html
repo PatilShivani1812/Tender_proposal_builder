@@ -1,0 +1,16 @@
+
+{% block content %}
+
+    <div class="proposal-details">
+        <h1>{{ proposal.proposal_id }} {{ proposal.title }}</h1>
+
+       
+        <p><strong>Company Name:</strong> {{ proposal.companyName }}</p>
+        <p><strong>Proposal Summary:</strong> {{ proposal.proposalSummary }}</p>
+        <p><strong>Proposal Planning:</strong> {{ proposal.projectPlanning }}</p>
+        <p><strong>Financing:</strong> {{ proposal.financing }}</p>
+        <p><strong>Contact Name:</strong> {{ proposal.contactName }}</p>
+        <p><strong>Contact Email:</strong> {{ proposal.contactEmail }}</p>
+        <p><strong>Contact Phone No:</strong> {{ proposal.contactPhoneNo }}</p>
+    </div>
+{% endblock %}

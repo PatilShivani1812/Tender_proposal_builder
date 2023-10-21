@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 style="color: #020202;">Edit Proposal - {{ proposal.title }}</h2>
+  <form method="post" style="margin-top: 20px; padding: 20px; background-color: #f5f5f5;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-warning btn-sm">Save Changes</button>
+      </div>
+      <div class="col-md-6">
+        <a href="{% url 'proposal_list' %}" class="btn btn-outline-secondary btn-sm" style="float: right; margin-right: 10px;" >Cancel
+        </a>
+      </div>
+    </div>
+  </form>
+{% endblock %}

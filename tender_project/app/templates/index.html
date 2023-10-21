@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 text-center">
+        <h1>Proposals</h1>
+    </div>
+    <div class="col-md-4 text-md-right">
+        <a href="{% url 'add_proposal' %}" class="btn btn-outline-secondary btn-sm mb-2 " style="float: right; margin-right: 10px;">Add Proposal</a>
+    </div>
+</div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Company Name</th>
+                <th>Proposal Summary</th>
+               
+                <th>Contact Name</th>
+
+                <th>Actions</th>
+                <th>Sections</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proposal in proposals %}
+                <tr>
+                    <td>{{ proposal.proposal_id }}</td>
+                    <td>{{ proposal.title }}</td>
+                    <td>{{ proposal.companyName }}</td>
+                    <td>{{ proposal.proposalSummary }}</td>
+
+                    <td>{{ proposal.contactName }}</td>
+
+                    <td>
+                        <a href="{% url 'edit_proposal' proposal_id=proposal.proposal_id %}" class="btn btn-outline-dark btn-sm mb-2 ">Edit Proposal</a>
+                        <span class="button-space"></span>
+                        <a href="{% url 'add_section' proposal_id=proposal.proposal_id %}" class="btn btn-outline-success btn-sm mb-2">Add Section</a>
+                        <span class="button-space"></span>
+                        <a href="{% url 'delete_section' proposal_id=proposal.proposal_id %}" class="btn btn-outline-danger btn-sm">Del</a>
+                        <span class="button-space"></span>
+                        <a href="{% url 'generate_pdf' proposal_id=proposal.proposal_id %}" class="btn btn-outline-info btn-sm ">Preview</a>
+                        <span class="button-space"></span>
+
+                    </td>
+                    <td>
+                        {% for section in proposal.sections.all %}
+                            {{ section.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ 
+{% endblock %}
